@@ -2,9 +2,8 @@ import java.util.ArrayList;
 
 public class L15Inheritance {
     public static void main(String[] args) {
-        SavingsAccount account = new SavingsAccount();
-        System.out.println(account.getFirstName());
-        System.out.println(account.getLastName());
+        SavingsAccount account = new SavingsAccount("Jon","Snow",1000,1.5);
+        System.out.println(account);
 
         // when we define a class we are defining a new data type
         // This arraylist can only store instances of SavingsAccount
@@ -19,6 +18,7 @@ public class L15Inheritance {
         allAccounts.add(new CheckingAccount());
     }
 }
+
 // do inheritance with extends
 // the child class inherits all the properties and methods of the parent class
 // syntax: class <child class> extends <parent class> {}
@@ -51,18 +51,33 @@ class SavingsAccount extends BankAccount{
         // whereas lastName and 
         return getFirstName() + " " + lastName + balance;
     }
+
+    public String toString(){
+        return getFirstName()+" " + lastName + ", balance = " + balance +  ", interest rate = " + interestRate;
+    }
+
 }   
 
 class CheckingAccount extends BankAccount{
-    private String CheckingNumber;
 
-    public String getCheckingNumber() {
-        return CheckingNumber;
+    private double overdraftLimit;
+    public CheckingAccount(){
+        super();
+        overdraftLimit = 0.0;
     }
 
-    public void setCheckingNumber(String checkingNumber) {
-        CheckingNumber = checkingNumber;
+    public CheckingAccount(String firstName,String lastName,double balance, double overdraftLimit){
+        super(firstName, lastName, balance);      
+        this.overdraftLimit = overdraftLimit;
     }
+
+    public double getOverdraftLimit() {
+        return overdraftLimit;
+    }
+    public void setOverdraftLimit(double overdraftLimit) {
+        this.overdraftLimit = overdraftLimit;
+    }
+    
     
 }
 
@@ -77,15 +92,11 @@ class BankAccount{
         balance = 0;
     }
 
-    
-
     public BankAccount(String firstName, String lastName, double balance) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.balance = balance;
     }
-
-
 
     public String getFirstName() {
         return firstName;
@@ -111,7 +122,10 @@ class BankAccount{
         this.balance = balance;
     }
 
-    
+    public String toString(){
+        return  firstName + lastName + balance ;
+    }
+
 }
 
 // inheritance chain

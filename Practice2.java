@@ -3,35 +3,40 @@ import java.util.*;
 public class Practice2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        // getting the number of shapes
         System.out.println("Enter the number of shapes: ");
         int noShapes = sc.nextInt();
+
+        // generating a list to store the objects created
         ArrayList<Shape> newList = new ArrayList<Shape>();
         
+        //appending objects into an ArrayList called newlist
         while (noShapes>0){
-            System.out.println("Enter the top portion of the top-left coordinate: ");
+            System.out.println("Enter the TOP portion of the top-left coordinate: ");
             double t = sc.nextDouble();
-            System.out.println("Enter the left portion of the top-left coordinate: ");
+            System.out.println("Enter the LEFT portion of the top-left coordinate: ");
             double l = sc.nextDouble();
-            System.out.println("Enter the length of the shape: ");
+            System.out.println("Enter the LENGTH of the shape: ");
             double length = sc.nextDouble();
-            System.out.println("Enter the width of the shape: ");
+            System.out.println("Enter the WIDTH of the shape: ");
             double width = sc.nextDouble();
             //append the shape to array
             newList.add(new Shape(t,l,length,width));
             noShapes--;
         }
-        for (int i=0;i<newList.length;i++ ){
-            System.out.println("Shape " +  
+
+        // iterating through the newList to print out the Top-left coordinate, bottom-right coordinate, length, width
+        for (int i=0;i<newList.size();i++ ){
+            System.out.println("Shape " + (i+1));
             System.out.println("Top-left coordinate: (" 
-            + shapes.getT() + ", "+shapes.getL()+").");
+            + newList.get(i).getT() + ", "+newList.get(i).getL()+").");
             System.out.println("Bottom-right coordinate: (" 
-            + shapes.getB() + ", "+shapes.getR()+").");
-            System.out.println("Length: (" 
-            + shapes.getB() + ", "+shapes.getR()+").");
+            + newList.get(i).getB() + ", "+newList.get(i).getR()+").");
+            System.out.println("Length: "+ newList.get(i).getLength() );
+            System.out.println("Width: " + newList.get(i).getWidth());
+            System.out.println(" ");
         }
-
     }
-
 }
 
 class Shape{
@@ -75,7 +80,7 @@ class Shape{
     }
 
     public double getB() {
-        return L + width;
+        return T + length;
     }
 
     public void setB(double b) {
@@ -83,7 +88,7 @@ class Shape{
     }
 
     public double getR() {
-        return T + length;
+        return L + width;
     }
 
     public void setR(double r) {
