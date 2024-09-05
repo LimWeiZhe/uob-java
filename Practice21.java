@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Practice2 {
+public class Practice21 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         // getting the number of shapes
