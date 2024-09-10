@@ -69,6 +69,8 @@ public class Practice21 {
             noTextLabels--;
         }
 
+        System.out.println(drawableList.size());
+
         System.out.println("Would you like to display all drawables? (Y/N)?");
         sc.nextLine(); // Consume the newline character
         String display = sc.nextLine();
