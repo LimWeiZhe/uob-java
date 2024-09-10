@@ -5,5 +5,11 @@ public class Main {
         SavingsAccount account = new SavingsAccount("Jon", 1200, 0.01);
         account.applyCompoundInterest(6); // apply 6 months of compound inteest
         System.out.println("After 6 months of interest =>" + account.getBalance());
+        try{
+            account.withdraw(2000);
+        } catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
      }
+     
 }

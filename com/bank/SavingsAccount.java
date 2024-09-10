@@ -18,6 +18,13 @@ public class SavingsAccount {
         return balance;
     }
 
+    public void withdraw(double amount) {
+        if (amount > balance) {
+            throw new IllegalArgumentException("Insufficient balance");
+        }
+        balance -= amount;
+    }
+    
     public String getName() {
         return name;
     }
